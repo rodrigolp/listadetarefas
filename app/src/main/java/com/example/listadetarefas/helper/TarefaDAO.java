@@ -44,7 +44,20 @@ public class TarefaDAO implements ITarefaDAO {
 
     @Override
     public boolean atualizar(Tarefa tarefa) {
-        return false;
+
+        ContentValues cv = new ContentValues();
+        cv.put("nome", tarefa.getNomeTarefa());
+
+        try{
+            String[] args = {tarefa.getId().toString()};
+            escreve.update(DBHelper.TABELA_TAREFAS, cv, "id=?", args );
+            Log.i("INFO", "Tarefa atualizada");
+        }catch (Exception e){
+            Log.e("INFO", "Erro ao atualizar" + e.getMessage());
+            return false;
+        }
+
+        return true;
     }
 
     @Override
@@ -57,7 +70,7 @@ public class TarefaDAO implements ITarefaDAO {
 
         List<Tarefa> tarefas = new ArrayList<>();
 
-        String sql = "SELECT * FROM" + DBHelper.TABELA_TAREFAS + " ;";
+        String sql = "SELECT * FROM " + DBHelper.TABELA_TAREFAS + " ;";
         Cursor c= le.rawQuery(sql, null);
 
         while(c.moveToNext()){

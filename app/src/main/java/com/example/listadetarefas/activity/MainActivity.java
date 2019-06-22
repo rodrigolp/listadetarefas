@@ -54,7 +54,12 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onItemClick(View view, int position) {
-                                    Log.i("clique", "onItemClick");
+                                    Tarefa tarefaSelecionada = listaTarefas.get(position);
+
+                                    Intent intent = new Intent(MainActivity.this, adicionar_tarefa.class);
+                                    intent.putExtra("tarefaSelecionada", tarefaSelecionada);
+
+                                    startActivity(intent);
                             }
 
                             @Override
