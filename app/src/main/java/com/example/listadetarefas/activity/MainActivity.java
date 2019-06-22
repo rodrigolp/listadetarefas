@@ -1,5 +1,6 @@
 package com.example.listadetarefas.activity;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -17,6 +18,7 @@ import android.widget.LinearLayout;
 
 import com.example.listadetarefas.R;
 import com.example.listadetarefas.adapter.TarefaAdapter;
+import com.example.listadetarefas.helper.DBHelper;
 import com.example.listadetarefas.helper.RecyclerItemClickListener;
 import com.example.listadetarefas.model.Tarefa;
 

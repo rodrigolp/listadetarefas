@@ -17,7 +17,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        String sql = "CREATE TABLE IF NOT EXISTIS " + TABELA_TAREFAS
+        String sql = "CREATE TABLE IF NOT EXISTS " + TABELA_TAREFAS
                 + "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 " nome TEXT NOT NULL ); ";
 
@@ -28,8 +28,11 @@ public class DBHelper extends SQLiteOpenHelper {
             Log.i("INFO DB", "Erro ao criar a tabela" + e.getMessage());
         }
 
+    }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
+
 }
