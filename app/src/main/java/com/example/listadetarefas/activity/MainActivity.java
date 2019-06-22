@@ -20,6 +20,7 @@ import com.example.listadetarefas.R;
 import com.example.listadetarefas.adapter.TarefaAdapter;
 import com.example.listadetarefas.helper.DBHelper;
 import com.example.listadetarefas.helper.RecyclerItemClickListener;
+import com.example.listadetarefas.helper.TarefaDAO;
 import com.example.listadetarefas.model.Tarefa;
 
 import java.util.ArrayList;
@@ -77,16 +78,8 @@ public class MainActivity extends AppCompatActivity {
     public void carregarListaTarefas(){
 
 
-
-        Tarefa tarefa1= new Tarefa();
-        tarefa1.setNomeTarefa("Ir mercado");
-        listaTarefas.add(tarefa1);
-
-        Tarefa tarefa2= new Tarefa();
-        tarefa1.setNomeTarefa("Ir feira");
-        listaTarefas.add(tarefa2);
-
-
+        TarefaDAO tarefaDAO = new TarefaDAO(getApplicationContext());
+        listaTarefas = tarefaDAO.listar();
 
         tarefaAdapter = new TarefaAdapter(listaTarefas);
 
