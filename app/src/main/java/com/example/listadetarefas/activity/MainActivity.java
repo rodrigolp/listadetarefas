@@ -8,13 +8,16 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 
 import com.example.listadetarefas.R;
 import com.example.listadetarefas.adapter.TarefaAdapter;
+import com.example.listadetarefas.helper.RecyclerItemClickListener;
 import com.example.listadetarefas.model.Tarefa;
 
 import java.util.ArrayList;
@@ -36,6 +39,28 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerView);
 
+        recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(
+                        getApplicationContext(),
+                        recyclerView,
+                        new RecyclerItemClickListener.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                            }
+
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                    Log.i("clique", "onItemClick");
+                            }
+
+                            @Override
+                            public void onLongItemClick(View view, int position) {
+                                    Log.i("clique", "onLongItemClick");
+                            }
+                        }
+                )
+        );
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
